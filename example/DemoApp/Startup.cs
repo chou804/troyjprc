@@ -22,9 +22,7 @@ namespace DemoApp
             services.AddScoped<IMembershipRepo, FakeMembershipRepo>();
             services.AddScoped<ITokenKeyStorage, TokenKeyStorage>();
 
-
             // JRPC
-            services.AddJPRC();
             services.AddJPRCService<EchoService>()
                     .AddJPRCService<AuthAppService>();
         }

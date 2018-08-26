@@ -80,11 +80,14 @@ namespace TroyLab.AspNetCore.JRPC
 
         public void RevokeToken(string token)
         {
-            Console.WriteLine($"{token} has been revoke");
+            _tokenKeyStorage.RevokeToken(token);
         }
 
         public string ValidateToken(string token)
         {
+            if (_tokenKeyStorage.IsTokenRevoked(token))
+                return "";
+
             string username = null;
             var principal = GetPrincipal(token);
             if (principal == null)

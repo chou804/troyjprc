@@ -17,20 +17,21 @@ namespace TroyLab.AspNetCore.JRPC
         //static IServiceCollection _services;
 
         private static readonly List<Type> registeredServiceType = new List<Type>();
+        private static bool initialized = false;
 
-        public static IServiceCollection AddJPRC(this IServiceCollection services)
-        {
-            if (services == null)
-            {
-                throw new ArgumentNullException(nameof(services));
-            }
+        //public static IServiceCollection AddJPRC(this IServiceCollection services)
+        //{
+        //    if (services == null)
+        //    {
+        //        throw new ArgumentNullException(nameof(services));
+        //    }
 
-            services.AddScoped<IAuthentication, AuthenticationService>()
-                    .AddScoped<ITokenManager, TokenManager>()
-                    .AddScoped<IMembership, MembershipService>();
+        //    services.AddScoped<IAuthentication, AuthenticationService>()
+        //            .AddScoped<ITokenManager, TokenManager>()
+        //            .AddScoped<IMembership, MembershipService>();
 
-            return services;
-        }
+        //    return services;
+        //}
 
         public static IServiceCollection AddJPRCService<TJRPCService>(this IServiceCollection services)
         {
@@ -42,10 +43,19 @@ namespace TroyLab.AspNetCore.JRPC
             services.AddScoped(typeof(TJRPCService));
             registeredServiceType.Add(typeof(TJRPCService));
 
+            if (!initialized)
+            {
+                services.AddScoped<IAuthentication, AuthenticationService>()
+                    .AddScoped<ITokenManager, TokenManager>()
+                    .AddScoped<IMembership, MembershipService>();
+
+                initialized = true;
+            }
+
             return services;
         }
 
-        public static IApplicationBuilder UseJRPC(this IApplicationBuilder builder)
+        public static IApplicationBuilder UseJRPC(this IApplicationBuilder builder, string jrpcPath = "/jrpc")
         {
             if (builder == null)
             {
@@ -65,7 +75,7 @@ namespace TroyLab.AspNetCore.JRPC
                 RPCServer.UserMembership(services.GetService<IMembership>());
             }
 
-            builder.Map("/jrpc", JRPCHandler);
+            builder.Map(jrpcPath, JRPCHandler);
 
             return builder;
         }

@@ -34,6 +34,8 @@ namespace DemoApp.Services
         {
             _authentication.Logout(req.AccessToken);
 
+            Console.WriteLine(req.Account);
+
             var v = new AUTH.LogoutView();
 
             return await Task.FromResult(v);
