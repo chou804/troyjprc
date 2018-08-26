@@ -14,7 +14,7 @@ namespace DemoApp.Services
             _authentication = authentication;
         }
 
-        [JRPCMethod]
+        [JRPCMethod(nameof(Login))]
         public async Task<AUTH.LoginView> Login(AUTH.Login input)
         {
             var tokenstring = _authentication.Login(input.Account, input.Password);
@@ -28,7 +28,7 @@ namespace DemoApp.Services
             return await Task.FromResult(v);
         }
 
-        [JRPCMethod]
+        [JRPCMethod(nameof(Logout))]
         [JRPCAuthorized]
         public async Task<AUTH.LogoutView> Logout(AUTH.Logout input, RPCRequest req)
         {
