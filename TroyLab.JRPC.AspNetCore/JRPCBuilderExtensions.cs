@@ -10,7 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using TroyLab.JRPC;
 
-namespace TroyLab.AspNetCore.JRPC
+namespace TroyLab.JRPC.AspNetCore
 {
     public static class JRPCBuilderExtensions
     {

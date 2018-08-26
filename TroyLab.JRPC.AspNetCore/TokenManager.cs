@@ -7,7 +7,7 @@ using System.Security.Cryptography;
 using System.Text;
 using TroyLab.JRPC;
 
-namespace TroyLab.AspNetCore.JRPC
+namespace TroyLab.JRPC.AspNetCore
 {
     public class TokenManager : ITokenManager
     {

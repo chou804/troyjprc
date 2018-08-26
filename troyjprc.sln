@@ -7,14 +7,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "example", "example", "{F5E9
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoApp", "example\DemoApp\DemoApp.csproj", "{82DE62CA-BBC0-4E5D-ABAD-B34101F4ECC6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TroyLab.AspNetCore.JRPC", "TroyLab.AspNetCore.JRPC\TroyLab.AspNetCore.JRPC.csproj", "{3D79374D-07B3-47C9-A5B4-9C91038D54D7}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7CBFEAB2-204E-45B0-861D-6E9919F8F01F}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TroyLab.JRPC", "TroyLab.JRPC\TroyLab.JRPC.csproj", "{C924D77F-5674-490C-9FD0-967F762E70DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TroyLab.JRPC.AspNetCore", "TroyLab.JRPC.AspNetCore\TroyLab.JRPC.AspNetCore.csproj", "{AE39E58C-19D8-43A6-A0EA-2886D7B70C17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,14 +26,14 @@ Global
 		{82DE62CA-BBC0-4E5D-ABAD-B34101F4ECC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82DE62CA-BBC0-4E5D-ABAD-B34101F4ECC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82DE62CA-BBC0-4E5D-ABAD-B34101F4ECC6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3D79374D-07B3-47C9-A5B4-9C91038D54D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3D79374D-07B3-47C9-A5B4-9C91038D54D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3D79374D-07B3-47C9-A5B4-9C91038D54D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3D79374D-07B3-47C9-A5B4-9C91038D54D7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C924D77F-5674-490C-9FD0-967F762E70DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C924D77F-5674-490C-9FD0-967F762E70DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C924D77F-5674-490C-9FD0-967F762E70DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C924D77F-5674-490C-9FD0-967F762E70DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE39E58C-19D8-43A6-A0EA-2886D7B70C17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE39E58C-19D8-43A6-A0EA-2886D7B70C17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE39E58C-19D8-43A6-A0EA-2886D7B70C17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE39E58C-19D8-43A6-A0EA-2886D7B70C17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

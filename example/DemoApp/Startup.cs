@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using TroyLab.AspNetCore.JRPC;
 using TroyLab.JRPC;
+using TroyLab.JRPC.AspNetCore;
 using DemoApp.Services;
 using DemoApp.Data;
 
