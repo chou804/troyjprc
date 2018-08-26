@@ -9,15 +9,15 @@ namespace DemoApp.Services
     public class EchoService
     {
         [JRPCMethod]
-        public async Task<DUMMY.EchoView> Echo11(DUMMY.Echo input)
+        public async Task<DEMO.EchoView> Echo(DEMO.Echo input)
         {
-            var v = new DUMMY.EchoView { Msg = input.Msg };
+            var v = new DEMO.EchoView { Msg = input.Msg };
 
             return await Task.FromResult(v);
         }
     }
 
-    public class DUMMY
+    public class DEMO
     {
         public class Echo
         {
@@ -27,16 +27,6 @@ namespace DemoApp.Services
         public class EchoView
         {
             public string Msg { get; set; }
-        }
-
-        public class GetUserInfo
-        {
-            public string UserName { get; set; }
-        }
-
-        public class GetUserInfoView
-        {
-            public string UserInfo { get; set; }
         }
     }
 }

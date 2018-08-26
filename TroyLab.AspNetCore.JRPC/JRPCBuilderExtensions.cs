@@ -17,21 +17,25 @@ namespace TroyLab.AspNetCore.JRPC
         //static IServiceCollection _services;
 
         private static readonly List<Type> registeredServiceType = new List<Type>();
-        private static bool initialized = false;
+        private static bool _useAuthentication;
 
-        //public static IServiceCollection AddJPRC(this IServiceCollection services)
-        //{
-        //    if (services == null)
-        //    {
-        //        throw new ArgumentNullException(nameof(services));
-        //    }
+        public static IServiceCollection AddJPRC(this IServiceCollection services, bool useAuthentication = false)
+        {
+            if (services == null)
+            {
+                throw new ArgumentNullException(nameof(services));
+            }
 
-        //    services.AddScoped<IAuthentication, AuthenticationService>()
-        //            .AddScoped<ITokenManager, TokenManager>()
-        //            .AddScoped<IMembership, MembershipService>();
+            if (useAuthentication)
+            {
+                services.AddScoped<IAuthentication, AuthenticationService>()
+                        .AddScoped<ITokenManager, TokenManager>()
+                        .AddScoped<IMembership, MembershipService>();
+            }
+            _useAuthentication = useAuthentication;
 
-        //    return services;
-        //}
+            return services;
+        }
 
         public static IServiceCollection AddJPRCService<TJRPCService>(this IServiceCollection services)
         {
@@ -42,15 +46,6 @@ namespace TroyLab.AspNetCore.JRPC
 
             services.AddScoped(typeof(TJRPCService));
             registeredServiceType.Add(typeof(TJRPCService));
-
-            if (!initialized)
-            {
-                services.AddScoped<IAuthentication, AuthenticationService>()
-                    .AddScoped<ITokenManager, TokenManager>()
-                    .AddScoped<IMembership, MembershipService>();
-
-                initialized = true;
-            }
 
             return services;
         }
@@ -71,8 +66,11 @@ namespace TroyLab.AspNetCore.JRPC
                     RPCServer.AddService(svc);
                 }
 
-                RPCServer.UserTokenManager(services.GetService<ITokenManager>());
-                RPCServer.UserMembership(services.GetService<IMembership>());
+                if (_useAuthentication)
+                {
+                    RPCServer.UserTokenManager(services.GetService<ITokenManager>());
+                    RPCServer.UserMembership(services.GetService<IMembership>());
+                }
             }
 
             builder.Map(jrpcPath, JRPCHandler);

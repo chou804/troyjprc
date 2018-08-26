@@ -23,8 +23,9 @@ namespace DemoApp
             services.AddScoped<ITokenKeyStorage, TokenKeyStorage>();
 
             // JRPC
-            services.AddJPRCService<EchoService>()
-                    .AddJPRCService<AuthAppService>();
+            services.AddJPRC(useAuthentication: true);
+            services.AddJPRCService<EchoService>();
+            services.AddJPRCService<AuthAppService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
