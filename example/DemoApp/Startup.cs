@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using TroyLab.AspNetCore.JRPC;
-using TroyLab.JRPC.Core;
+using TroyLab.JRPC;
 using DemoApp.Services;
 using DemoApp.Data;
 

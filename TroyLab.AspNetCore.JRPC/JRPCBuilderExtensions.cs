@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
-using TroyLab.JRPC.Core;
+using TroyLab.JRPC;
 
 namespace TroyLab.AspNetCore.JRPC
 {

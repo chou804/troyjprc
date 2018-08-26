@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TroyLab.JRPC.Core;
+using TroyLab.JRPC;
 
 namespace DemoApp.Data
 {

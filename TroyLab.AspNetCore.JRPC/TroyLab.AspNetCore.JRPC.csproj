@@ -2,6 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Troy</Authors>
+    <Version>0.0.1</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TroyLab.JRPC.Core\TroyLab.JRPC.Core.csproj" />
+    <ProjectReference Include="..\TroyLab.JRPC\TroyLab.JRPC.csproj" />
   </ItemGroup>
 
 </Project>
