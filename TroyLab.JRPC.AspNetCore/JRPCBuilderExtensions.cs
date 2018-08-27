@@ -15,6 +15,7 @@ namespace TroyLab.JRPC.AspNetCore
     public static class JRPCBuilderExtensions
     {
         //static IServiceCollection _services;
+        static Regex rxLeadingSlashs = new Regex(@"^[\/\\]+", RegexOptions.Compiled);
 
         private static readonly List<Type> registeredServiceType = new List<Type>();
         private static bool _useAuthentication;
@@ -102,8 +103,16 @@ namespace TroyLab.JRPC.AspNetCore
                     try
                     {
                         var jreq = RPCPacker.Unpack<JRPCRequest>(body);
+
+                        // allow methodName path e.g. /jrpc/{methodName}
                         rpcReq.RPCFuncName = jreq.Method;
-                        rpcReq.PackedData = jreq.Params.ToString();
+                        if (string.IsNullOrWhiteSpace(rpcReq.RPCFuncName) && ctx.Request.Path.HasValue)
+                        {
+                            rpcReq.RPCFuncName = rxLeadingSlashs.Replace(ctx.Request.Path.Value, "").ToLower();
+                        }
+
+                        // 允許 body 就直接是 PackedData e.g. { "Msg": "Hello" }
+                        rpcReq.PackedData = jreq.Params != null ? jreq.Params.ToString() : body;
 
                         jres.Id = jreq.Id;
                     }

@@ -12,7 +12,7 @@ namespace TroyLab.JRPC
         //public JRPCMethodAttribute() { }
         public JRPCMethodAttribute(string name)
         {
-            Name = name;
+            Name = name.ToLower();
         }
     }
 }

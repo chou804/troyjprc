@@ -8,13 +8,13 @@ namespace DemoApp.Services
 {
     public class EchoService
     {
-        //[JRPCMethod("Echo")]
-        //public async Task<DEMO.EchoView> Echo(DEMO.Echo input)
-        //{
-        //    var v = new DEMO.EchoView { Msg = input.Msg };
+        [JRPCMethod("Echo")]
+        public async Task<DEMO.EchoView> Echo(DEMO.Echo input)
+        {
+            var v = new DEMO.EchoView { Msg = input.Msg };
 
-        //    return await Task.FromResult(v);
-        //}
+            return await Task.FromResult(v);
+        }
 
         //[JRPCMethod(nameof(Func11_1))]
         //public Task<string> Func11_1(string input, RPCRequest req)
@@ -23,12 +23,12 @@ namespace DemoApp.Services
         //    return Task.FromResult(nameof(Func11_1));
         //}
 
-        //[JRPCMethod(nameof(Func10_1))]
-        //public Task<string> Func10_1(string input)
-        //{
-        //    //ok
-        //    return Task.FromResult(nameof(Func10_1));
-        //}
+        [JRPCMethod(nameof(Func10_1))]
+        public Task<string> Func10_1(string input)
+        {
+            //ok
+            return Task.FromResult(nameof(Func10_1));
+        }
 
         //[JRPCMethod(nameof(Func01_1))]
         //public Task<string> Func01_1(RPCRequest req)
@@ -60,12 +60,12 @@ namespace DemoApp.Services
         //    Console.WriteLine("TEST OK");
         //}
 
-        [JRPCMethod(nameof(Func01_0))]
-        public Task Func01_0(RPCRequest req)
-        {
-            //ok
-            return Task.FromResult(nameof(Func01_0));
-        }
+        //[JRPCMethod(nameof(Func01_0))]
+        //public Task Func01_0(RPCRequest req)
+        //{
+        //    //ok
+        //    return Task.FromResult(nameof(Func01_0));
+        //}
 
         //[JRPCMethod(nameof(Func00_0))]
         //public async Task Func00_0()
