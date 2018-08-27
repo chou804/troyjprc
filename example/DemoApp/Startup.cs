@@ -26,7 +26,7 @@ namespace DemoApp
             });
 
             services.AddJPRCService<EchoService>();
-            services.AddJPRCService<AuthAppService>();
+            services.AddJPRCService<AuthService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
