@@ -19,13 +19,14 @@ namespace DemoApp
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IMembershipRepo, FakeMembershipRepo>();
-            services.AddScoped<ITokenKeyStorage, TokenKeyStorage>();
-
             // JRPC
-            services.AddJPRC(useAuthentication: true);
+            services.AddJPRC(opt =>
+            {
+                opt.UseAuthentication<FakeMembershipRepo, TokenKeyStorage>();
+            });
+
             services.AddJPRCService<EchoService>();
-            //services.AddJPRCService<AuthAppService>();
+            services.AddJPRCService<AuthAppService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
