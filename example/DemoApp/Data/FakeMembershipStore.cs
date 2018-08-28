@@ -7,12 +7,12 @@ using TroyLab.JRPC;
 
 namespace DemoApp.Data
 {
-    public class FakeMembershipRepo : IMembershipRepo
+    public class FakeMembershipStore : IMembershipStore
     {
         readonly List<FakeUser> _users = new List<FakeUser>();
         readonly List<FakeRole> _roles = new List<FakeRole>();
 
-        public FakeMembershipRepo()
+        public FakeMembershipStore()
         {
             var adminRole = new FakeRole
             {

@@ -21,15 +21,15 @@ namespace TroyLab.JRPC.AspNetCore
         }
 
         public void UseAuthentication<TMembershipRepo, TTokenKeyStorage>()
-            where TMembershipRepo : IMembershipRepo
-            where TTokenKeyStorage : ITokenKeyStorage
+            where TMembershipRepo : IMembershipStore
+            where TTokenKeyStorage : ITokenKeyStore
         {
             _services.AddScoped<IAuthentication, AuthenticationService>()
                      .AddScoped<ITokenManager, TokenManager>()
                      .AddScoped<IMembership, MembershipService>();
 
-            _services.AddScoped(typeof(IMembershipRepo), typeof(TMembershipRepo))
-                     .AddScoped(typeof(ITokenKeyStorage), typeof(TTokenKeyStorage));
+            _services.AddScoped(typeof(IMembershipStore), typeof(TMembershipRepo))
+                     .AddScoped(typeof(ITokenKeyStore), typeof(TTokenKeyStorage));
         }
     }
 

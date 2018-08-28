@@ -7,9 +7,9 @@ namespace TroyLab.JRPC
 {
     public class MembershipService : IMembership
     {
-        private readonly IMembershipRepo _repo;
+        private readonly IMembershipStore _repo;
 
-        public MembershipService(IMembershipRepo membershipRepo)
+        public MembershipService(IMembershipStore membershipRepo)
         {
             _repo = membershipRepo;
         }

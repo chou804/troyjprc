@@ -22,7 +22,7 @@ namespace DemoApp
             // JRPC
             services.AddJPRC(opt =>
             {
-                opt.UseAuthentication<FakeMembershipRepo, TokenKeyStorage>();
+                opt.UseAuthentication<FakeMembershipStore, TokenKeyStore>();
             });
 
             services.AddJPRCService<EchoService>();

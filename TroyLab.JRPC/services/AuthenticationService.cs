@@ -6,11 +6,10 @@ namespace TroyLab.JRPC
 {
     public class AuthenticationService : IAuthentication
     {
-
-        readonly IMembershipRepo _membershipRepo;
+        readonly IMembershipStore _membershipRepo;
         readonly ITokenManager _tokenManager;
 
-        public AuthenticationService(IMembershipRepo membershipRepo, ITokenManager tokenManager)
+        public AuthenticationService(IMembershipStore membershipRepo, ITokenManager tokenManager)
         {
             _membershipRepo = membershipRepo;
             _tokenManager = tokenManager;

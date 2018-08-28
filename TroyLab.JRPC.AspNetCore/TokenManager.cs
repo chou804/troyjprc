@@ -16,15 +16,15 @@ namespace TroyLab.JRPC.AspNetCore
         readonly JwtSecurityTokenHandler handler;
         readonly string issuer;
 
-        private readonly ITokenKeyStorage _tokenKeyStorage;
-        public TokenManager(ITokenKeyStorage tokenKeyStorage)
+        private readonly ITokenKeyStore _tokenKeyStorage;
+        public TokenManager(ITokenKeyStore tokenKeyStorage)
         {
             _tokenKeyStorage = tokenKeyStorage;
 
-            secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_tokenKeyStorage.GetSymmtricKey()));
+            secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_tokenKeyStorage.SymmtricKey));
             credentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256Signature);
             handler = new JwtSecurityTokenHandler();
-            issuer = _tokenKeyStorage.GetIssuer();
+            issuer = _tokenKeyStorage.Issuer;
         }
 
         public string CreateToken(string username, TokenPayload payloads = null)
@@ -37,7 +37,7 @@ namespace TroyLab.JRPC.AspNetCore
                     new Claim(ClaimTypes.Name, username)
                 }),
                 IssuedAt = DateTime.UtcNow,
-                Expires = DateTime.UtcNow.AddDays(365),
+                Expires = _tokenKeyStorage.DefaultExpires,
                 SigningCredentials = credentials
             };
 

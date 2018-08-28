@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TroyLab.JRPC
 {
-    public interface ITokenKeyStorage
+    public interface ITokenKeyStore
     {
         #region Command
         //void SavePublicAndPriveKey(string audience, string keys);
@@ -12,8 +12,9 @@ namespace TroyLab.JRPC
         #endregion
 
         #region Query
-        string GetSymmtricKey();
-        string GetIssuer();
+        DateTime DefaultExpires { get; }
+        string SymmtricKey { get; }
+        string Issuer { get; }
         bool IsTokenRevoked(string token);
         //string GetPublicKey(string audience);
         //string GetPrivateAndPublicKey(string audience);

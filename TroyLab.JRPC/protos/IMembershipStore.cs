@@ -7,7 +7,7 @@ namespace TroyLab.JRPC
     /// <summary>
     /// 處理使用者角色及權限相關的資料存取
     /// </summary>
-    public interface IMembershipRepo
+    public interface IMembershipStore
     {
         #region Command
         object UpsertUser(AuthUser user);
