@@ -118,7 +118,13 @@ namespace TroyLab.JRPC
             Ensure.ArgumentNotEmpty(resource, nameof(resource));
             Ensure.ArgumentNotEmpty(action, nameof(action));
 
-            return role.Permissoins.TryGetValue(resource, out ICollection<string> actions) ? actions.Contains(action) : false;
+            if (role.Permissoins.TryGetValue(resource, out ICollection<string> actions))
+            {
+                if (actions == null || actions.Contains(action))
+                    return true;
+            }
+
+            return false;
         }
 
         public bool IsGranted(AuthUser user, string resource, string action)
