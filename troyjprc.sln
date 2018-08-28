@@ -9,6 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoApp", "example\DemoApp\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7CBFEAB2-204E-45B0-861D-6E9919F8F01F}"
 	ProjectSection(SolutionItems) = preProject
+		LICENSE.txt = LICENSE.txt
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -24,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TroyLab.JRPC.AspNetCore", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TroyLab.JRPC.Tests", "test\TroyLab.JRPC.Tests\TroyLab.JRPC.Tests.csproj", "{7EA2E065-FCD2-4829-AA07-7285350A4CB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TroyLab.JRPC.Client", "src\TroyLab.JRPC.Client\TroyLab.JRPC.Client.csproj", "{98596A34-AB08-426A-822F-9E75C0680324}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TroyLab.JRPC.Client", "src\TroyLab.JRPC.Client\TroyLab.JRPC.Client.csproj", "{98596A34-AB08-426A-822F-9E75C0680324}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TroyLab.JRPC.ClientTest", "test\TroyLab.JRPC.ClientTest\TroyLab.JRPC.ClientTest.csproj", "{D33D6298-DE63-4061-8289-A0D3FC0361B6}"
 EndProject
