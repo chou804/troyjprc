@@ -83,7 +83,7 @@ namespace DemoApp.Data
                 new AuthResource
                 {
                     Id = FakeResources.ProductMaintain,
-                    Text = "商品資料維謢",
+                    Text = "PRODUCT",
                     Actions = new List<AuthAction>
                     {
                         AuthAction.Create, AuthAction.Read, AuthAction.Update, AuthAction.Approve
@@ -92,7 +92,7 @@ namespace DemoApp.Data
                 new AuthResource
                 {
                     Id = FakeResources.OrderQuery,
-                    Text = "訂單查詢",
+                    Text = "ORDER",
                     Actions = new List<AuthAction>
                     {
                         AuthAction.Read

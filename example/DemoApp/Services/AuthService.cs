@@ -35,6 +35,13 @@ namespace DemoApp.Services
 
             Console.WriteLine(req.Account);
         }
+
+        [JRPCMethod("GetProd")]
+        [JRPCAuthorized("PRODUCT")]
+        public async Task<string> GetProd(string prodId)
+        {
+            return $"{prodId} OK";
+        }
     }
 
     public class Login
