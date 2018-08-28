@@ -3,7 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>Troy</Authors>
-    <Version>0.0.4</Version>
+    <Version>0.0.5</Version>
+    <RepositoryUrl>https://github.com/chou804/troyjprc</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
