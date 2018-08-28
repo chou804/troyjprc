@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TroyLab.JRPC;
 
-namespace DemoApp.Services
+namespace SimpleApp
 {
     public class EchoService
     {
@@ -15,8 +15,6 @@ namespace DemoApp.Services
 
             return await Task.FromResult(v);
         }
-
-        
     }
 
     public class Echo

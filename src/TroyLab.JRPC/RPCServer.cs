@@ -17,12 +17,12 @@ namespace TroyLab.JRPC
         static readonly Regex rxEndSlash = new Regex(@"\/$", RegexOptions.Compiled);
 
         /// <summary>
-        /// 存放 RPCFunc
+        /// JRPCMethod.Name, IRPCFunc
         /// </summary>
         private static readonly ConcurrentDictionary<string, IRPCFunc> funcDict = new ConcurrentDictionary<string, IRPCFunc>();
 
         /// <summary>
-        /// 存到 RPCFunc 的 methodName, JRPCAuthorizedAttribute
+        /// JRPCMethod.Name, JRPCAuthorizedAttribute
         /// </summary>
         private static readonly ConcurrentDictionary<string, IEnumerable<JRPCAuthorizedAttribute>> authorizedDict = new ConcurrentDictionary<string, IEnumerable<JRPCAuthorizedAttribute>>();
 
@@ -52,10 +52,9 @@ namespace TroyLab.JRPC
         }
 
         /// <summary>
-        /// 判斷是否有權限
+        /// authorization check
         /// </summary>
         /// <param name="req"></param>
-        /// <param name="token"></param>
         /// <returns></returns>
         public static bool CheckAuthorized(RPCRequest req)
         {
@@ -82,16 +81,18 @@ namespace TroyLab.JRPC
             {
                 if (attr.Resource == null && attr.Actions == null)
                 {
-                    // 沒有標注任何 resource, 表示只要登入就可以呼叫
+                    // [JRPCAuthorized] only
                     return true;
                 }
 
                 if (attr.Actions.Count() == 0)
                 {
+                    // [JRPCAuthorized("resource")
                     if (_membership.IsGranted(account, attr.Resource))
                         return true;
                 }
 
+                // [JRPCAuthorized("resource", "action1" "action2"...)]
                 foreach (var action in attr.Actions)
                 {
                     if (_membership.IsGranted(account, attr.Resource, action))
@@ -102,10 +103,6 @@ namespace TroyLab.JRPC
             return true;
         }
 
-        /// <summary>
-        /// 新增service物件，將service內含有[RPCFunc]的方法都註冊為Microservice
-        /// </summary>
-        /// <param name="serviceObj"></param>
         public static void AddService(object serviceObj)
         {
             RegisterFuncs(serviceObj);
@@ -139,15 +136,13 @@ namespace TroyLab.JRPC
         }
 
         /// <summary>
-        ///  註冊Service類別，含有[JRPCMethod]的方法
+        /// 
         /// </summary>
         /// <param name="svcObj"></param>
-        /// <param name="withConsul">是否註冊到consul</param>
         public static void RegisterFuncs(object svcObj)
         {
             foreach (var m in svcObj.GetType().GetMethods(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
             {
-                // 不處理沒標註[RPCFunc]的方法
                 var jmethod = (JRPCMethodAttribute)m.GetCustomAttribute(typeof(JRPCMethodAttribute), false);
                 if (jmethod == null)
                     continue;
@@ -155,10 +150,8 @@ namespace TroyLab.JRPC
                 if (string.IsNullOrWhiteSpace(jmethod.Name))
                     throw new Exception("JMethod.Name cannot not empty");
 
-                //取得該方法的參數
                 var parameters = m.GetParameters();
 
-                // 處理 JRPCAuthorizedAttribute
                 var authorizedAttributes = m.GetCustomAttributes(typeof(JRPCAuthorizedAttribute), false) as IEnumerable<JRPCAuthorizedAttribute>;
 
                 ProcessAuthorizedAttribute(authorizedAttributes, jmethod.Name);

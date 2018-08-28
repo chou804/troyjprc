@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TroyLab.JRPC\TroyLab.JRPC.csproj" />
+    <ProjectReference Include="..\..\src\TroyLab.JRPC.Client\TroyLab.JRPC.Client.csproj" />
   </ItemGroup>
 
 </Project>

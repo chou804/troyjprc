@@ -9,8 +9,9 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using TroyLab.JRPC;
+using TroyLab.JRPC.AspNetCore;
 
-namespace TroyLab.JRPC.AspNetCore
+namespace Microsoft.Extensions.DependencyInjection
 {
     public class JRPCOptions
     {

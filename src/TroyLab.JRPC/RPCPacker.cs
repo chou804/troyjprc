@@ -61,6 +61,9 @@ namespace TroyLab.JRPC
 
         public static T Unpack<T>(string json)
         {
+            if (string.IsNullOrWhiteSpace(json))
+                return default(T);
+
             return JsonConvert.DeserializeObject<T>(json);
         }
     }
